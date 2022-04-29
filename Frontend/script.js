@@ -22,13 +22,13 @@ function apiFetch(search, page) {
     .then(function (response) {
       return response.json();
     })
-    .then(function (data) {
-      for (var i = 0; i <= data.length; i++) {
+    .then(function (result) {
+      for (var i = 0; i <= result.length - 1; i++) {
         var image = document.createElement("img");
-        if (data[i].farm != 0) {
+        if (result[i].farm != 0) {
           image.setAttribute(
             "src",
-            `https://farm${data[i].farm}.staticflickr.com/${data[i].server}/${data[i].id}_${data[i].secret}.jpg`
+            `https://farm${result[i].farm}.staticflickr.com/${result[i].server}/${result[i].id}_${result[i].secret}.jpg`
           );
         }
         document.querySelector(".gallery").appendChild(image);
